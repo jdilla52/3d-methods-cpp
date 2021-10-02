@@ -1,0 +1,23 @@
+# These are some examples of commonly ignored file patterns.
+# You should customize this list as applicable to your project.
+# Learn more about .gitignore:
+#     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
+
+# Log files
+*.log
+build/
+cmake-build-debug/
+# Package files
+*.jar
+
+# Maven
+target/
+dist/
+
+
+# JetBrains IDE
+.idea/
+.gradle/
+# Unit test reports
+TEST*.xml
+.DS_Store
