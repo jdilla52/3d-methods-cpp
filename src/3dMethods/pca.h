@@ -11,24 +11,19 @@
 using namespace Eigen;
 using namespace std;
 
-ArrayXXd AverageRows(MatrixXd m) {
-  ArrayXXd R(1, 3);
-  for (int i = 0; i < m.rows(); i++) {
-    R += m.row(i).array();
-  }
-  return R / m.rows();
-}
 
 /// perform pca on a matrix of data
+/// page 52
 /// \param mat
 /// \return eigenValues, eigenVectors
 tuple<VectorXd, MatrixXd> Pca(MatrixXd mat) {
   try {
-    // center data to origin
+    // 1. Compute the center of mass of the data points,
+    // 2. Translate all the points so that the origin is at m:
     MatrixXd centered = mat.rowwise() - mat.colwise().mean();
-    // create covariance matrix
+    // 3. Construct the d  d scatter matrix S = Y Y >, where Y is the  matrix whose columns are the yi
     MatrixXd cov = (centered.adjoint() * centered) / double(mat.rows() - 1);
-    // spectral decomp using eigen
+    //4. Compute the spectral decomposition: S = V V >.  5. Sort the eigenvalues in decreasing order: 1  2 
     SelfAdjointEigenSolver<MatrixXd> eigensolver(cov);
     if (eigensolver.info() != Success) throw runtime_error("failed to solve");
 
