@@ -4,7 +4,7 @@ project(3dMethods LANGUAGES CXX)
 
 set(LAMBDA_CONFIG_HEADER ${CMAKE_BINARY_DIR}/runner_config.h)
 message("Generating ${LAMBDA_CONFIG_HEADER}...")
-configure_file(src/3dMethods/runner_config.h.in ${LAMBDA_CONFIG_HEADER} )
+configure_file(src/3dMethods/methods_config.in ${LAMBDA_CONFIG_HEADER} )
 
 # third party
 add_subdirectory(thirdparty)
